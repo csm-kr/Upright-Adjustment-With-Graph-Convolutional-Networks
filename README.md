@@ -11,9 +11,9 @@ The goal of this tasks is to find North pole and restore from rotated images to 
 
 ### Requirements
 
-- Python 3.5 version or above
-- Python 1.5.0 version or above
-- torchvision 0.4.0 version or above
+- Python >= 3.5 
+- Python >= 1.5.0 v
+- torchvision >= 0.4.0 
 - visdom
 - numpy 
 - cv2

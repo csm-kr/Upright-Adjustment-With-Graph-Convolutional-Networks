@@ -1,12 +1,13 @@
-# Upright Adjustment with graph convolutional networks 
+# Upright Adjustment with Graph Convolutional Networks 
 
 ### Intoduction
 
-:octocat: An Official Code for 'Upright Adjustment with graph convolutional networks'
+:octocat: An Official Code for **Upright Adjustment with Graph Convolutional Networks**
 [paper](https://ieeexplore.ieee.org/document/9190715) in ICIP2020
 
-![concept](https://user-images.githubusercontent.com/18729104/99486691-09c3bf00-29a8-11eb-93f1-ebf9e8852d03.png)
-the goal of this tasks is to find North pole and restore rotated images.
+![networks](https://user-images.githubusercontent.com/18729104/99487045-d6cdfb00-29a8-11eb-89c5-ff0dd7b4638c.png)
+
+The goal of this tasks is to find North pole and restore from rotated images to upright images.
 
 ### Requirements
 
@@ -20,7 +21,6 @@ the goal of this tasks is to find North pole and restore rotated images.
 - numba
 
 ### Network
-![networks](https://user-images.githubusercontent.com/18729104/99487045-d6cdfb00-29a8-11eb-89c5-ff0dd7b4638c.png)
 
 ### Results
 qualitative results

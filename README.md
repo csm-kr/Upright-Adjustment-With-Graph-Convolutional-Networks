@@ -13,7 +13,7 @@ The goal of this tasks is to find North pole and restore from rotated images to 
 
 ```
 - Python >= 3.5 
-- Python >= 1.5.0 
+- Pytorch >= 1.5.0 
 - torchvision >= 0.4.0 
 - visdom
 - numpy 

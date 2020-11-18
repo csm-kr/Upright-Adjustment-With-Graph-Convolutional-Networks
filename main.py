@@ -17,7 +17,7 @@ if __name__ == "__main__":
     parser.add_argument('--epoch', type=int, default=50, help='how many the model iterate?')
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--lr', type=float, default=1e-5)
-    parser.add_argument('--data_path', type=str, default='D:\Data\\360_data')
+    parser.add_argument('--data_path', type=str, default='D:\Data\\SUN360')
     parser.add_argument('--save_path', type=str, default="./saves")
     parser.add_argument('--save_file_name', type=str, default="densenet_101_kappa_25")
 
@@ -28,7 +28,7 @@ if __name__ == "__main__":
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # 3. visdom
-    vis = visdom.Visdom(port='8098')
+    vis = visdom.Visdom()
 
     # 4. data loader
     train_set = Sphere_Dataset(root=opts.data_path, split='TRAIN')

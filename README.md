@@ -4,13 +4,14 @@
 
 :octocat: An Official Code for 'Upright Adjustment with graph convolutional networks'
 [paper](https://ieeexplore.ieee.org/document/9190715) in ICIP2020
+
 ![concept](https://user-images.githubusercontent.com/18729104/99486691-09c3bf00-29a8-11eb-93f1-ebf9e8852d03.png)
 the goal of this tasks is to find North pole and restore rotated images.
 
 ### Requirements
 
-- Python 3.7
-- Pytorch 1.5.0
+- Python 3.x (x > 6) above 
+- Pytorch 1.x.0 (x > 5) above
 - visdom
 - numpy 
 - cv2
@@ -34,20 +35,13 @@ quantitative results
 
 ### Quick start
 
-1\. make environment pytorch==1.5.0 and torchvision==0.6.0
+1\. requirements 
 
-  ```bash
-  conda create -n ~ python=3.7
-  conda activate ~
-  conda install pytorch==1.5.0, torchvision==0.6.0
-  ```
-2\. requirements 
-
-  ```bash
-  git clone https://github.com/csm-kr/Upright-Adjustment-with-Graph-Convolutional-Networks
-  cd Upright-Adjustment-with-Graph-Convolutional-Networks
-  python -m pip install -r requirements.txt
-  ```
+```bash
+git clone https://github.com/csm-kr/Upright-Adjustment-with-Graph-Convolutional-Networks
+cd Upright-Adjustment-with-Graph-Convolutional-Networks
+python -m pip install -r requirements.txt
+```
 
 3\. download SUN 360 dataset from 
 ```
@@ -56,11 +50,14 @@ https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/ESbnmzr-J0Z
 
 and for ubuntu user, 
 ```
-wget "https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/ESbnmzr-J0ZBjjY8XVfSoIkBM3_9yKE_hYf-hT7vVs7suw?e=hKpbu3&download=1"
+mkdir SUN360
+cd SUN360
+wget -O "SUN360.zip" "https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/ESbnmzr-J0ZBjjY8XVfSoIkBM3_9yKE_hYf-hT7vVs7suw?e=hKpbu3&download=1"
+unzip SUN360.zip
 ```
 
 
-and the components of the dataset are as follows.
+the components of the dataset are as follows.
 ```bash
 SUN360  |-- train
              |-- 000000.jpg
@@ -88,7 +85,7 @@ https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/EctJ0cICVnB
 if ubuntu user, 
 
 ```
-wget "https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/EctJ0cICVnBNrdcYT84aGLwBh7HkpgbaHsQ-GFM93-TmlA?e=MgLUBl&download=1"
+wget -O "densenet_101_kappa_25.34.pth" "https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/EctJ0cICVnBNrdcYT84aGLwBh7HkpgbaHsQ-GFM93-TmlA?e=MgLUBl&download=1"
 ```
 
 
@@ -101,12 +98,13 @@ usage: main.py [-h] [--epoch] [--batch_size] [--lr]
 
   -h, --help            show this help message and exit
   --epoch               whole traning epochs 
-  --batch_size          for training batch size, test batch is only 1.
+  --batch_size          for training batch size
   --lr                  initial learning rate (default 1e-5) 
   --data_path           your SUN360 data path. 
-  --save_file_name      when you do experiment, you can change save_file_name to distinguish other pths.
   --save_path           the path to save .pth file
-  --start_epoch         when you resume, set the start epochs. 
+  --save_file_name      when you do experiment, you can change save_file_name to distinguish other pths.
+
+e.g) main.py --epoch 100 --batch_size 32 --lr 1e-5 --data_path "home/data/SUN360" --save_path './saves' --save_file_name 'densenet_101_kappa_25'
 ```
 
 
@@ -114,29 +112,16 @@ usage: main.py [-h] [--epoch] [--batch_size] [--lr]
 
 ```
 # python test.py 
-usage: test.py [-h] [--test_epoch] [--save_path] 
-               [--save_file_name] [--conf_thres]
+usage: test.py [-h] [--epoch] [--batch_size] [--data_path] [--save_path] [--save_file_name] 
 
   -h, --help            show this help message and exit
-  --test_epoch          for testing, which epoch param do we get
+  --epoch               for testing, which epoch param do we get
+  --batch_size          for testing, batch size
+  --data_path           for testing, your SUN360 data path  
   --save_path           for testing, params path (default './saves') 
-  --save_file_name      save_file_name to distinguish other params. (default 'yolo_v2_vgg_16')
-  --conf_thres          for testing, confience threshold which detector detect above the thres (default 0.01) 
-```
+  --save_file_name      save_file_name to distinguish other params. (default 'densenet_101_kappa_25')
 
-```
-# python main.py 
-usage: main.py [-h] [--epoch] [--batch_size] [--lr] 
-               [--data_path] [--save_path] [--save_file_name] 
-
-  -h, --help            show this help message and exit
-  --epoch               whole traning epochs 
-  --batch_size          for training batch size, test batch is only 1.
-  --lr                  initial learning rate (default 1e-5) 
-  --data_path           your SUN360 data path. 
-  --save_file_name      when you do experiment, you can change save_file_name to distinguish other pths.
-  --save_path           the path to save .pth file
-  --start_epoch         when you resume, set the start epochs. 
+e.g) test.py --epoch 50 --data_path "home/data/SUN360" --batch_size 16 
 ```
 
 

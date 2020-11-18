@@ -107,7 +107,7 @@ def test(epoch, device, data_loader, model, criterion, vis, save_path, save_file
                                title='Test results',
                                legend=['Loss', 'Angle_max', 'Angle_exp']))
 
-    print(test_angle_exp)
+    print("Angle Error : {:.4f}".format(test_angle_exp))
     print('test_time : {:.4f}s'.format(time.time() - tic))
 
 

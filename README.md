@@ -49,7 +49,16 @@ quantitative results
   python -m pip install -r requirements.txt
   ```
 
-3\. download SUN 360 dataset from https://drive.google.com/file/d/1cOadYYkwXKzAf7YGYokEAEn1ofzx4QDX/view?usp=sharing 
+3\. download SUN 360 dataset from 
+```
+https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/ESbnmzr-J0ZBjjY8XVfSoIkBM3_9yKE_hYf-hT7vVs7suw?e=hKpbu3
+```
+
+and for ubuntu user, 
+```
+wget "https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/ESbnmzr-J0ZBjjY8XVfSoIkBM3_9yKE_hYf-hT7vVs7suw?e=hKpbu3&download=1"
+```
+
 
 and the components of the dataset are as follows.
 ```bash
@@ -72,7 +81,16 @@ SUN360  |-- train
 ```
 Especially, The **'map_xy'** folder contains a mapping matrix of 180 degrees vertical viewing angle (FoV) and 360 degrees horizontal viewing angle. (about 47GB)
 
-4\. download model weight from https://drive.google.com/file/d/1cOadYYkwXKzAf7YGYokEAEn1ofzx4QDX/view?usp=sharing move into ./saves
+4\. download model weight from 
+````
+https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/EctJ0cICVnBNrdcYT84aGLwBh7HkpgbaHsQ-GFM93-TmlA?e=MgLUBl
+````
+if ubuntu user, 
+
+```
+wget "https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/EctJ0cICVnBNrdcYT84aGLwBh7HkpgbaHsQ-GFM93-TmlA?e=MgLUBl&download=1"
+```
+
 
 #### Training
 

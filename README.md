@@ -2,8 +2,8 @@
 
 ### Intoduction
 
-:octocat: An Official pytorch implementation Code for 'Upright Adjustment with graph convolutional networks(ICIP2020)'
-[pdf](https://ieeexplore.ieee.org/document/9190715)
+:octocat: An Official pytorch implementation Code for 'Upright Adjustment with graph convolutional networks'
+[paper](https://ieeexplore.ieee.org/document/9190715) in ICIP2020
 
 ### Requirements
 

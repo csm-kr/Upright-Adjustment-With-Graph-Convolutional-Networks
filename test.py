@@ -3,6 +3,12 @@ import numpy as np
 import torch
 import os
 from evaluate import angle_acc
+import argparse
+from model import DenseNet_GCN
+from loss import JSD_Loss
+from dataset import Sphere_Dataset
+from train import train
+from torch.utils.data import DataLoader
 
 
 def test(epoch, device, data_loader, model, criterion, vis, save_path, save_file_name):
@@ -76,7 +82,7 @@ def test(epoch, device, data_loader, model, criterion, vis, save_path, save_file
             test_angle_max += angle_max
 
             # print
-            if idx % 1 == 0:
+            if idx % 10 == 0:
                 print('Step: [{0}/{1}]\t'
                       'Loss: {test_loss:.4f}\t'
                       'Angle error_max: {test_angle_error_max:.4f}\t'
@@ -91,13 +97,60 @@ def test(epoch, device, data_loader, model, criterion, vis, save_path, save_file
         test_angle_exp /= len(data_loader)
 
         # plot
-        vis.line(X=torch.ones((1, 3)).cpu() * epoch,  # step
-                 Y=torch.Tensor([test_loss, test_angle_max, test_angle_exp]).unsqueeze(0).cpu(),
-                 win='test',
-                 update='append',
-                 opts=dict(xlabel='Epochs',
-                           ylabel='Angle / Loss ',
-                           title='Test results',
-                           legend=['Loss', 'Angle_max', 'Angle_exp']))
+        if vis is not None:
+            vis.line(X=torch.ones((1, 3)).cpu() * epoch,  # step
+                     Y=torch.Tensor([test_loss, test_angle_max, test_angle_exp]).unsqueeze(0).cpu(),
+                     win='test',
+                     update='append',
+                     opts=dict(xlabel='Epochs',
+                               ylabel='Angle / Loss ',
+                               title='Test results',
+                               legend=['Loss', 'Angle_max', 'Angle_exp']))
 
+    print(test_angle_exp)
     print('test_time : {:.4f}s'.format(time.time() - tic))
+
+
+if __name__ == '__main__':
+
+    # 1. parser
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--epoch', type=int, default=34, help='how many the model iterate?')
+    parser.add_argument('--batch_size', type=int, default=32)
+    parser.add_argument('--data_path', type=str, default='D:\Data\SUN360')
+    parser.add_argument('--save_path', type=str, default="./saves")
+    parser.add_argument('--save_file_name', type=str, default="densenet_101_kappa_25")
+    test_opts = parser.parse_args()
+    print(test_opts)
+
+    # 2. device config
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+    # 3. vis
+    vis = None
+
+    # 4. data loader
+    test_set = Sphere_Dataset(root=test_opts.data_path, split='TEST')
+    test_loader = DataLoader(dataset=test_set,
+                             batch_size=test_opts.batch_size,
+                             shuffle=True)
+
+    # 5. model
+    model = DenseNet_GCN().to(device)
+
+    # 6. criterion
+    criterion = JSD_Loss()
+
+    # 7. test
+    test(epoch=test_opts.epoch,
+         device=device,
+         data_loader=test_loader,
+         model=model,
+         criterion=criterion,
+         vis=vis,
+         save_path=test_opts.save_path,
+         save_file_name=test_opts.save_file_name)
+
+
+
+

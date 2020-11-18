@@ -29,12 +29,8 @@ def train(epoch, device, data_loader, model, criterion, optimizer, vis, save_pat
 
         # -------------------- cuda ------------------------
         images = images.to(device)
-        phi = phi.to(device)
-        theta = theta.to(device)
         xyz = xyz.to(device)
-        # pdf = pdf.to(device)
         adj = adj.to(device)
-        rotated_points = rotated_points.to(device)
 
         # -------------------- loss -------------------------
         output = model(images, adj)  # B, 91, 1
@@ -73,9 +69,6 @@ def train(epoch, device, data_loader, model, criterion, optimizer, vis, save_pat
         output_index = np.argmax(output_numpy, axis=1)
         pred_xyz_max = data_loader.dataset.points[output_index]
 
-        # phi theat to xyz
-        # pred_xyz = spherical_to_cartesian(output_numpy[:, 0], output_numpy[:, 1])
-
         # get angles
         angle_exp = angle_acc(gt_xyz, pred_xyz_exp)
         angle_max = angle_acc(gt_xyz, pred_xyz_max)
@@ -89,7 +82,7 @@ def train(epoch, device, data_loader, model, criterion, optimizer, vis, save_pat
             lr = param_group['lr']
 
         # -------------------- print -------------------------
-        if idx % 1 == 0:
+        if idx % 10 == 0:
             print('Epoch: [{0}]\t'
                   'Step: [{1}/{2}]\t'
                   'Loss: {loss:.4f}\t'
@@ -117,7 +110,7 @@ def train(epoch, device, data_loader, model, criterion, optimizer, vis, save_pat
         # accuracy plot
         vis.line(X=torch.ones((1, 2)).cpu() * idx + epoch * data_loader.__len__(),  # step
                  Y=torch.Tensor([angle_max, angle_exp]).unsqueeze(0).cpu(),
-                 win='angle_accuracy',
+                 win='train angle_accuracy',
                  update='append',
                  opts=dict(xlabel='step',
                            ylabel='angle',

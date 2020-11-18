@@ -34,7 +34,7 @@ quantitative results
 
 ### Quick start
 
-1\. pytorch 
+1\. make environment pytorch==1.5.0 and torchvision==0.6.0
 
   ```bash
   conda create -n ~ python=3.7
@@ -74,11 +74,56 @@ Especially, The **'map_xy'** folder contains a mapping matrix of 180 degrees ver
 
 4\. download model weight from https://drive.google.com/file/d/1cOadYYkwXKzAf7YGYokEAEn1ofzx4QDX/view?usp=sharing move into ./saves
 
-3\. check the TYPE of image.  -- TYPE (e.g. 'jpg')
+#### Training
 
-4\. Enter tne command : **python demo.py --demo_img_path PATH --demo_img_type TYPE**
+```
+# python main.py 
+usage: main.py [-h] [--epoch] [--batch_size] [--lr] 
+               [--data_path] [--save_path] [--save_file_name] 
+
+  -h, --help            show this help message and exit
+  --epoch               whole traning epochs 
+  --batch_size          for training batch size, test batch is only 1.
+  --lr                  initial learning rate (default 1e-5) 
+  --data_path           your SUN360 data path. 
+  --save_file_name      when you do experiment, you can change save_file_name to distinguish other pths.
+  --save_path           the path to save .pth file
+  --start_epoch         when you resume, set the start epochs. 
+```
+
+
+#### Testing
+
+```
+# python test.py 
+usage: test.py [-h] [--test_epoch] [--save_path] 
+               [--save_file_name] [--conf_thres]
+
+  -h, --help            show this help message and exit
+  --test_epoch          for testing, which epoch param do we get
+  --save_path           for testing, params path (default './saves') 
+  --save_file_name      save_file_name to distinguish other params. (default 'yolo_v2_vgg_16')
+  --conf_thres          for testing, confience threshold which detector detect above the thres (default 0.01) 
+```
+
+```
+# python main.py 
+usage: main.py [-h] [--epoch] [--batch_size] [--lr] 
+               [--data_path] [--save_path] [--save_file_name] 
+
+  -h, --help            show this help message and exit
+  --epoch               whole traning epochs 
+  --batch_size          for training batch size, test batch is only 1.
+  --lr                  initial learning rate (default 1e-5) 
+  --data_path           your SUN360 data path. 
+  --save_file_name      when you do experiment, you can change save_file_name to distinguish other pths.
+  --save_path           the path to save .pth file
+  --start_epoch         when you resume, set the start epochs. 
+```
+
 
 ## Citation
+
 
 ```
 @inproceedings{jung2020upright,

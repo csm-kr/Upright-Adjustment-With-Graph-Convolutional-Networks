@@ -10,8 +10,9 @@ the goal of this tasks is to find North pole and restore rotated images.
 
 ### Requirements
 
-- Python 3.x (x > 6) above 
-- Pytorch 1.x.0 (x > 5) above
+- Python 3.5 version or above
+- Python 1.5.0 version or above
+- torchvision 0.4.0 version or above
 - visdom
 - numpy 
 - cv2
@@ -43,7 +44,7 @@ cd Upright-Adjustment-with-Graph-Convolutional-Networks
 python -m pip install -r requirements.txt
 ```
 
-3\. download SUN 360 dataset from 
+2\. download SUN 360 dataset from 
 ```
 https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/ESbnmzr-J0ZBjjY8XVfSoIkBM3_9yKE_hYf-hT7vVs7suw?e=hKpbu3
 ```
@@ -78,7 +79,7 @@ SUN360  |-- train
 ```
 Especially, The **'map_xy'** folder contains a mapping matrix of 180 degrees vertical viewing angle (FoV) and 360 degrees horizontal viewing angle. (about 47GB)
 
-4\. download model weight from 
+3\. download model weight from 
 ````
 https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/EctJ0cICVnBNrdcYT84aGLwBh7HkpgbaHsQ-GFM93-TmlA?e=MgLUBl
 ````
@@ -126,7 +127,6 @@ e.g) test.py --epoch 50 --data_path "home/data/SUN360" --batch_size 16
 
 
 ## Citation
-
 
 ```
 @inproceedings{jung2020upright,

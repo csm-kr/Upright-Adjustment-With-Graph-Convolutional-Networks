@@ -97,25 +97,25 @@ def train(epoch, device, data_loader, model, criterion, optimizer, vis, save_pat
                           lr=lr,
                           time=toc))
 
-        # loss plot
-        vis.line(X=torch.ones((1, 1)).cpu() * idx + epoch * data_loader.__len__(),  # step
-                 Y=torch.Tensor([loss.item()]).unsqueeze(0).cpu(),
-                 win='train_loss',
-                 update='append',
-                 opts=dict(xlabel='step',
-                           ylabel='Loss',
-                           title='training loss',
-                           legend=['Loss']))
+            # loss plot
+            vis.line(X=torch.ones((1, 1)).cpu() * idx + epoch * data_loader.__len__(),  # step
+                     Y=torch.Tensor([loss.item()]).unsqueeze(0).cpu(),
+                     win='train_loss',
+                     update='append',
+                     opts=dict(xlabel='step',
+                               ylabel='Loss',
+                               title='training loss',
+                               legend=['Loss']))
 
-        # accuracy plot
-        vis.line(X=torch.ones((1, 2)).cpu() * idx + epoch * data_loader.__len__(),  # step
-                 Y=torch.Tensor([angle_max, angle_exp]).unsqueeze(0).cpu(),
-                 win='train angle_accuracy',
-                 update='append',
-                 opts=dict(xlabel='step',
-                           ylabel='angle',
-                           title='angle_accuracy',
-                           legend=['angle_accuracy_max', 'angle_accuracy_exp']))
+            # accuracy plot
+            vis.line(X=torch.ones((1, 2)).cpu() * idx + epoch * data_loader.__len__(),  # step
+                     Y=torch.Tensor([angle_max, angle_exp]).unsqueeze(0).cpu(),
+                     win='train_angle_accuracy',
+                     update='append',
+                     opts=dict(xlabel='step',
+                               ylabel='angle',
+                               title='train_angle_accuracy',
+                               legend=['angle_accuracy_max', 'angle_accuracy_exp']))
 
     # -------------------- save -------------------------
     if not os.path.exists(save_path):

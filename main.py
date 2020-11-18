@@ -17,7 +17,7 @@ if __name__ == "__main__":
     parser.add_argument('--epoch', type=int, default=100, help='how many the model iterate?')
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--lr', type=float, default=1e-5)
-    parser.add_argument('--data_path', type=str, default='D:\Data\\SUN360')
+    parser.add_argument('--data_path', type=str, default="D:\Data\SUN360")
     parser.add_argument('--save_path', type=str, default="./saves")
     parser.add_argument('--save_file_name', type=str, default="densenet_101_kappa_25")
 

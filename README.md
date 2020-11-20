@@ -81,14 +81,14 @@ SUN360  |-- train
 ```
 Especially, The **'map_xy'** folder contains a mapping matrix of 180 degrees vertical viewing angle (FoV) and 360 degrees horizontal viewing angle. (about 47GB)
 
-3\. download model weight from 
+3\. download pretrained model weight from 
 ````
-https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/EctJ0cICVnBNrdcYT84aGLwBh7HkpgbaHsQ-GFM93-TmlA?e=MgLUBl
+https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/ETsX4KeIvRBJnP11DJGrz7cBZQOaCd33jurFBYxeNUqxOg?e=GD6G0T
 ````
 if ubuntu user, 
 
 ```
-wget -O "densenet_101_kappa_25.34.pth" "https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/EctJ0cICVnBNrdcYT84aGLwBh7HkpgbaHsQ-GFM93-TmlA?e=MgLUBl&download=1"
+wget -O "densenet_101_kappa_25.50.pth" "https://livecauac-my.sharepoint.com/:u:/g/personal/csm8167_cau_ac_kr/ETsX4KeIvRBJnP11DJGrz7cBZQOaCd33jurFBYxeNUqxOg?e=GD6G0T&download=1"
 ```
 
 

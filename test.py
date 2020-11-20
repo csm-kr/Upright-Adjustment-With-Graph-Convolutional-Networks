@@ -115,7 +115,7 @@ if __name__ == '__main__':
 
     # 1. parser
     parser = argparse.ArgumentParser()
-    parser.add_argument('--epoch', type=int, default=34, help='how many the model iterate?')
+    parser.add_argument('--epoch', type=int, default=50, help='how many the model iterate?')
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--data_path', type=str, default='D:\Data\SUN360')
     parser.add_argument('--save_path', type=str, default="./saves")
